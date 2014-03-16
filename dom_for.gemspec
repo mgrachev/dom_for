@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
   s.description = 'Easily create DOM HTML wrapper for objects.'
   s.license     = 'MIT'
 
-  s.files = Dir['{app,config,db,lib}/**/*'] + ['MIT-LICENSE', 'Rakefile', 'README.rdoc']
+  s.files = Dir['{app,config,db,lib}/**/*'] + ['MIT-LICENSE', 'Rakefile', 'README.md']
 
   #s.files         = `git ls-files -z`.split("\x0")
   #s.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
