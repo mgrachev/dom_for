@@ -1,7 +1,10 @@
-require 'dom_for/record'
+require 'active_support/dependencies/autoload'
 
 module DomFor
-  include Record
+  extend ActiveSupport::Autoload
+
+  autoload :Model
+  autoload :Record
 end
 
 ActionView::Helpers.send(:include, DomFor)

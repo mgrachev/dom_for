@@ -13,11 +13,13 @@ describe DomFor::Record do
 
     it 'returns div without nested tags' do
       user = User.create(name: 'test')
+
       expect(helper.dom_for_record(user)).to eq '<div class="user" data-object-id="1" id="user_1" />'
     end
 
     it 'returns div with nested tags' do
       user = User.create(name: 'test')
+
       expect(
         helper.dom_for_record(user) { helper.tag(:span) }
       ).to eq '<div class="user" data-object-id="1" id="user_1"><span /></div>'
@@ -25,6 +27,7 @@ describe DomFor::Record do
 
     it 'returns div with the additional data-attributes' do
       user = User.create(name: 'test')
+
       expect(
           helper.dom_for_record(user, admin: true) { helper.tag(:span) }
       ).to eq '<div class="user" data-admin="true" data-object-id="1" id="user_1"><span /></div>'

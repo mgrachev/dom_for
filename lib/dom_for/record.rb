@@ -1,12 +1,6 @@
 module DomFor
   module Record
-    # Creates a div tag with the attributes for record
-    #
-    # @param [ActiveRecord::Base] record Instance of ActiveRecord::Base
-    # @param [Hash] attrs Additional attributes for the record
-    # @param [Proc] block Block for a div tag
-    #
-    # @return [String] Sanitized HTML string
+    # Creates a div tag with the attributes for the record
     #
     # @example For the new record:
     #   dom_for_record(User.new) #=> <div class="user" id="new_user" />
@@ -22,6 +16,11 @@ module DomFor
     #     tag(:span)
     #   end #=> <div class="user" data-admin="true" data-object-id="1" id="user_1"><span /></div>
     #
+    # @param [ActiveRecord::Base] record Instance of ActiveRecord::Base
+    # @param [Hash] attrs Additional attributes for the record
+    # @param [Proc] block Block for a div tag
+    #
+    # @return [String] Sanitized HTML string
     def dom_for_record(record, attrs={}, &block)
       object_id     = dom_id(record)
       object_class  = dom_class(record.class)
