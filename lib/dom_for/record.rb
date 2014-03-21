@@ -1,6 +1,7 @@
 module DomFor
   module Record
-    # Creates a div tag with the attributes for the record
+    #
+    # Creates a div tag with the attributes for the instance of ActiveRecord
     #
     # @example For the new record:
     #   dom_for_record(User.new) #=> <div class="user" id="new_user" />
@@ -21,6 +22,7 @@ module DomFor
     # @param [Proc] block Block for a div tag
     #
     # @return [String] Sanitized HTML string
+    #
     def dom_for_record(record, attrs={}, &block)
       object_id     = dom_id(record)
       object_class  = dom_class(record.class)

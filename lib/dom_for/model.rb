@@ -1,6 +1,7 @@
 module DomFor
   module Model
-    # Creates a div tag with the attributes for the model
+    #
+    # Creates a div tag with the attributes for the model of ActiveRecord
     #
     # @example Without the block:
     #   dom_for_model(User) #=> <div class="users" id="users" />
@@ -27,6 +28,7 @@ module DomFor
     # @param [Proc] block Block for a div tag
     #
     # @return [String] Sanitized HTML string
+    #
     def dom_for_model(klass, attrs={}, &block)
       object_classes  = []
       class_name      = klass.to_s.underscore
