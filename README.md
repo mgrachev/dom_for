@@ -74,7 +74,7 @@ And record ActiveRecord:
 The second argument passed to additional html-attributes (is optional):
 
 ```erb
-<%= dom_for User, attribute_1: 'value_1', attribute_1: 'value_2' do %>
+<%= dom_for User, attribute_1: 'value_1', attribute_2: 'value_2' do %>
   <%= tag(:span) %>
 <% end %>
 ```
