@@ -1,6 +1,18 @@
 require 'active_support/dependencies/autoload'
 
 module DomFor
+  #
+  # dom_for Project do
+  #
+  #   dom_for Task do
+  #     dom_for task, attribute: 'yes'
+  #
+  #   dom_for User do
+  #     dom_for user, admin: false
+  #
+  #   dom_for Comment do
+  #     dom_for comment, private: true
+  #
   extend ActiveSupport::Autoload
 
   autoload :Model

@@ -1,4 +1,11 @@
 module DomFor
+  #
+  # Class name: user
+  #
+  # ID name: user_1
+  #
+  # Data-attributes: data-object-id = 1
+  #
   module Record
     #
     # Creates a div tag with the attributes for the instance of ActiveRecord

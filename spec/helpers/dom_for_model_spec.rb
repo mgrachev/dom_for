@@ -24,6 +24,12 @@ describe DomFor::Model do
       expect(helper.dom_for_model(User)).to eq '<div class="user new_user" data-action="new" id="new_user" />'
     end
 
+    it 'returns div for the new user without request' do
+      @user = User.new(name: 'test')
+
+      expect(helper.dom_for_model(User)).to eq '<div class="user" id="new_user" />'
+    end
+
     it 'returns div for the saved user' do
       @user = User.create(name: 'test')
       helper.request.stub(:path_parameters).and_return({ action: 'show' })

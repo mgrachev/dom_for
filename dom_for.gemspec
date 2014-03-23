@@ -11,23 +11,19 @@ Gem::Specification.new do |s|
   s.authors     = ['Mikhail Grachev']
   s.email       = ['work@mgrachev.com']
   s.homepage    = 'https://github.com/mgrachev/dom_for'
-  s.summary     = 'Easily create DOM HTML wrapper for objects.'
-  s.description = 'Easily create DOM HTML wrapper for objects.'
+  s.summary     = 'Helper for creating HTML wrappers ActiveRecord objects.'
+  s.description = 'Helper for easy creation of HTML wrapper ActiveRecord objects.'
   s.license     = 'MIT'
 
-  s.files = Dir['{app,config,db,lib}/**/*'] + ['MIT-LICENSE', 'Rakefile', 'README.md']
-
-  #s.files         = `git ls-files -z`.split("\x0")
-  #s.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
-  #s.test_files    = spec.files.grep(%r{^(test|spec|features)/})
-  #s.require_paths = ['lib']
+  s.files         = `git ls-files -z`.split("\x0")
+  s.executables   = s.files.grep(%r{^bin/}) { |f| File.basename(f) }
+  s.test_files    = s.files.grep(%r{^(test|spec|features)/})
+  s.require_paths = ['lib']
 
   s.add_dependency 'rails', '~> 3.2.17'
 
   s.add_development_dependency 'sqlite3'
-
   s.add_development_dependency 'rspec-rails'
-
   s.add_development_dependency 'yard', '~> 0.8.7'
   s.add_development_dependency 'redcarpet', '~> 3.0' # Markdown implementation (for yard)
 end

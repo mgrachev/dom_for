@@ -1,4 +1,26 @@
 module DomFor
+  #
+  # Name of classes
+  # Pages:
+  #   index - users
+  #   new   - user new_user
+  #   edit  - user edit_user
+  #   show  - user show_user
+  #
+  # ID name
+  # Pages:
+  #   index - users
+  #   new   - new_user
+  #   edit  - user_1
+  #   show  - user_1
+  #
+  # Data-attributes
+  # Pages:
+  #   index - data-action = index
+  #   new   - data-action = new
+  #   edit  - data-action = edit, data-object-id = 1
+  #   show  - data-action = show, data-object-id = 1
+  #
   module Model
     #
     # Creates a div tag with the attributes for the model of ActiveRecord
@@ -44,7 +66,7 @@ module DomFor
                     end
 
                     object_classes << dom_class(klass)
-                    object_classes << dom_class(klass, request_action)
+                    object_classes << dom_class(klass, request_action) if request_action.present?
 
                     dom_id(object)
                   else
