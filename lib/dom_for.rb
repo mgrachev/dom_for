@@ -40,4 +40,4 @@ module DomFor
 
 end
 
-ActionView::Helpers.send(:include, DomFor)
+ActionView::Base.send(:include, DomFor)
