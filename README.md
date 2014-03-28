@@ -2,8 +2,10 @@
 
 Helper for creating HTML wrappers ActiveRecord objects
 
+[![Gem Version](https://badge.fury.io/rb/dom_for.png)](http://badge.fury.io/rb/dom_for)
 [![Build Status](https://travis-ci.org/mgrachev/dom_for.png?branch=master)](https://travis-ci.org/mgrachev/dom_for)
 [![Coverage Status](https://coveralls.io/repos/mgrachev/dom_for/badge.png?branch=master)](https://coveralls.io/r/mgrachev/dom_for?branch=master)
+[![Code Climate](https://codeclimate.com/github/mgrachev/dom_for.png)](https://codeclimate.com/github/mgrachev/dom_for)
 [![Dependency Status](https://gemnasium.com/mgrachev/dom_for.svg)](https://gemnasium.com/mgrachev/dom_for)
 
 ## Installation
