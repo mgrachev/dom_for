@@ -25,6 +25,7 @@ Or install it yourself as:
 ## Usage
 
 ```erb
+<%# /app/views/users/index.html.erb %>
 <%= dom_for User, attribute_1: 'value_1', attribute_2: 'value_2', attribute_3: 'value_3' do %>
   <% @users.each do |user| %>
     <%= dom_for user, admin: user.admin, blocked: user.blocked do %>
@@ -48,6 +49,7 @@ Or install it yourself as:
 The first argument can be used as a model ActiveRecord:
 
 ```erb
+<%# /app/views/users/index.html.erb %>
 <%= dom_for User do %>
   <%= tag(:span) %>
 <% end %>
@@ -62,6 +64,7 @@ The first argument can be used as a model ActiveRecord:
 And record ActiveRecord:
 
 ```erb
+<%# /app/views/users/show.html.erb %>
 <%= dom_for @user do %>
   <%= tag(:span) %>
 <% end %>
@@ -76,6 +79,7 @@ And record ActiveRecord:
 The second argument passed to additional html-attributes (is optional):
 
 ```erb
+<%# /app/views/users/index.html.erb %>
 <%= dom_for User, attribute_1: 'value_1', attribute_2: 'value_2' do %>
   <%= tag(:span) %>
 <% end %>
@@ -90,6 +94,7 @@ The second argument passed to additional html-attributes (is optional):
 The third argument, the helper `dom_for`, takes a block of code that will be wrapped in the tag `<div>` (is optional):
 
 ```erb
+<%# /app/views/users/index.html.erb %>
 <%= dom_for User %>
 ```
 
@@ -100,6 +105,7 @@ The third argument, the helper `dom_for`, takes a block of code that will be wra
 When defined instance variable with class name, the helper `dom_for` creates the additional html-attributes for this object:
 
 ```erb
+<%# /app/views/users/show.html.erb %>
 <% @user = User.last %>
 <%= dom_for User do %>
   <%= tag(:span) %>
@@ -115,6 +121,7 @@ When defined instance variable with class name, the helper `dom_for` creates the
 For each request, the helper `dom_for` creates additional attribute `data-action`, which will be equal to the method of the controller handling the request:
 
 ```erb
+<%# /app/views/users/index.html.erb %>
 <%= dom_for User do %>
   <%= tag(:span) %>
 <% end %>
