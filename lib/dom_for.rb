@@ -1,4 +1,6 @@
 require 'active_support/dependencies/autoload'
+require 'active_support/core_ext/object/blank'
+require 'active_support/core_ext/string/inflections'
 
 module DomFor
   #
@@ -40,4 +42,4 @@ module DomFor
 
 end
 
-ActionView::Base.send(:include, DomFor)
+require_relative 'dom_for/railtie' if defined? Rails

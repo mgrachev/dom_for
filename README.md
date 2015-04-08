@@ -36,11 +36,11 @@ Or install it yourself as:
 ```
 
 ```html
-<div class="users" data-action="index" data-attribute-1="value_1" data-attribute-2="value_2" data-attribute-3="value_3" id="users">
-  <div class="user" data-admin="true" data-blocked="false" data-object-id="1" id="user_1">
+<div id="users" class="users" data-action="index" data-attribute-1="value_1" data-attribute-2="value_2" data-attribute-3="value_3">
+  <div id="user_1" class="user" data-admin="true" data-blocked="false" data-object-id="1">
     <span>Mikhail</span>
   </div>
-  <div class="user" data-admin="false" data-blocked="false" data-object-id="2" id="user_2">
+  <div id="user_2" class="user" data-admin="false" data-blocked="false" data-object-id="2">
     <span>Yulia</span>
   </div>
 </div>
@@ -56,7 +56,7 @@ The first argument can be used as a model ActiveRecord:
 ```
 
 ```html
-<div class="users" data-action="index" id="users" />
+<div id="users" class="users" data-action="index">
   <span />
 </div>
 ```
@@ -71,7 +71,7 @@ And record ActiveRecord:
 ```
 
 ```html
-<div class="user" data-action="show" data-object-id="1" id="user_1" />
+<div id="user_1" class="user" data-action="show" data-object-id="1" />
   <span />
 </div>
 ```
@@ -86,7 +86,7 @@ The second argument passed to additional html-attributes (is optional):
 ```
 
 ```html
-<div class="users" data-action="index" data-attribute-1="value_1" data-attribute-2="value_2" id="users" />
+<div id="users" class="users" data-action="index" data-attribute-1="value_1" data-attribute-2="value_2">
   <span />
 </div>
 ```
@@ -99,7 +99,7 @@ The third argument, the helper `dom_for`, takes a block of code that will be wra
 ```
 
 ```html
-<div class="users" data-action="index" id="users" />
+<div id="users" class="users" data-action="index" />
 ```
 
 When defined instance variable with class name, the helper `dom_for` creates the additional html-attributes for this object:
@@ -113,7 +113,7 @@ When defined instance variable with class name, the helper `dom_for` creates the
 ```
 
 ```html
-<div class="user" data-action="show" data-object-id="1" data-object="users" id="user_1" >
+<div id="user_1" class="user" data-action="show" data-object-id="1" data-object="users">
   <span />
 </div>
 ```
@@ -128,7 +128,7 @@ For each request, the helper `dom_for` creates additional attribute `data-action
 ```
 
 ```html
-<div class="users" data-action="index" id="users">
+<div id="users" class="users" data-action="index">
   <span />
 </div>
 ```
