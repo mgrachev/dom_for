@@ -32,14 +32,13 @@ module DomFor
   #
   # @return [String] Sanitized HTML string
   #
-  def dom_for(object, attrs={}, &block)
+  def dom_for(object, attrs = {}, &block)
     if object.instance_of? Class
       dom_for_model(object, attrs, &block)
     else
       dom_for_record(object, attrs, &block)
     end
   end
-
 end
 
 require_relative 'dom_for/railtie' if defined? Rails

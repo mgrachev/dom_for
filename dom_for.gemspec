@@ -1,5 +1,5 @@
 # coding: utf-8
-$:.push File.expand_path('../lib', __FILE__)
+$LOAD_PATH.push File.expand_path('../lib', __FILE__)
 
 # Maintain your gem's version:
 require 'dom_for/version'
@@ -28,4 +28,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'rspec-rails'
   s.add_development_dependency 'yard', '~> 0.8.7'
   s.add_development_dependency 'redcarpet', '~> 3.0' # Markdown implementation (for yard)
+  s.add_development_dependency 'rubocop'
 end

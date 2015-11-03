@@ -30,7 +30,7 @@ module DomFor
     #
     # @return [String] Sanitized HTML string
     #
-    def dom_for_record(record, attrs={}, &block)
+    def dom_for_record(record, attrs = {}, &block)
       object_id     = dom_id(record)
       object_class  = dom_class(record.class)
 

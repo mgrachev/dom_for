@@ -51,7 +51,7 @@ module DomFor
     #
     # @return [String] Sanitized HTML string
     #
-    def dom_for_model(klass, attrs={}, &block)
+    def dom_for_model(klass, attrs = {}, &block)
       object_classes  = []
       class_name      = klass.to_s.underscore
       request_action  = request.path_parameters[:action]
