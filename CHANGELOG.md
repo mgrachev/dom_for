@@ -1,3 +1,9 @@
+## 1.2.0 (24/11/2015)
+
+### Features
+
+* Ability to passing html class as an argument
+
 ## 1.1.0 (24/11/2015)
 
 ### Features
