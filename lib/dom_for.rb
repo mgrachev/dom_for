@@ -1,8 +1,12 @@
-require 'active_support/dependencies/autoload'
 require 'active_support/core_ext/object/blank'
 require 'active_support/core_ext/string/inflections'
 
+require_relative 'dom_for/model'
+require_relative 'dom_for/record'
+
 module DomFor
+  include Model
+  include Record
   #
   # dom_for Project do
   #
@@ -15,30 +19,23 @@ module DomFor
   #   dom_for Comment do
   #     dom_for comment, private: true
   #
-  extend ActiveSupport::Autoload
-
-  autoload :Model
-  autoload :Record
-
-  include Model
-  include Record
-
+  # Creates a html tag with the attributes for the model or record of ActiveRecord
   #
-  # Creates a div tag with the attributes for the model or record of ActiveRecord
-  #
-  # @param [ActiveRecord::Base, Class] object Model or record of ActiveRecord
-  # @param [Hash] attrs Additional attributes for the record
-  # @param [Proc] block Block for a div tag
+  # @param object [ActiveRecord::Base, Class] Model or record of ActiveRecord
+  # @param attrs [Hash] Additional attributes for the record
+  # @param block [Proc] Block for a div tag
   #
   # @return [String] Sanitized HTML string
   #
   def dom_for(object, attrs = {}, &block)
+    tag = attrs.delete(:tag) || :div
+
     if object.instance_of? Class
-      dom_for_model(object, attrs, &block)
+      _dom_for_model(object, tag, attrs, &block)
     else
-      dom_for_record(object, attrs, &block)
+      _dom_for_record(object, tag, attrs, &block)
     end
   end
 end
 
-require_relative 'dom_for/railtie' if defined? Rails
+require_relative 'dom_for/railtie' if defined? ::Rails

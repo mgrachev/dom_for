@@ -26,32 +26,33 @@ module DomFor
     # Creates a div tag with the attributes for the model of ActiveRecord
     #
     # @example Without the block:
-    #   dom_for_model(User) #=> <div class="users" id="users" />
+    #   dom_for(User) #=> <div class="users" id="users" />
     #
     # @example When there is a request:
-    #   dom_for_model(User) #=> <div class="users" data-action="show" id="users" />
+    #   dom_for(User) #=> <div class="users" data-action="show" id="users" />
     #
     # @example For the new user:
-    #   dom_for_model(User) #=> <div class="user new_user" data-action="new" id="new_user" />
+    #   dom_for(User) #=> <div class="user new_user" data-action="new" id="new_user" />
     #
     # @example For the saved record (if exists @user):
-    #   dom_for_model(User) #=> <div class="user show_user" data-action="show" data-object-id="1" data-object="users" id="user_1" />
+    #   dom_for(User) #=> <div class="user show_user" data-action="show" data-object-id="1" data-object="users" id="user_1" />
     #
     # @example With the additional attributes:
-    #   dom_for_model(User, admin: true) #=> <div class="user show_user" data-action="show" data-admin="true" data-object-id="1" data-object="users" id="user_1" />
+    #   dom_for(User, admin: true) #=> <div class="user show_user" data-action="show" data-admin="true" data-object-id="1" data-object="users" id="user_1" />
     #
     # @example With the block:
-    #   dom_for_model(User, admin: true) do
+    #   dom_for(User, admin: true) do
     #     tag(:span)
     #   end #=> <div class="user show_user" data-action="show" data-admin="true" data-object-id="1" data-object="users" id="user_1"><span /></div>
     #
-    # @param [Class] klass Model of ActiveRecord::Base
-    # @param [Hash] attrs Additional attributes for the record
-    # @param [Proc] block Block for a div tag
+    # @param klass [Class] Model of ActiveRecord::Base
+    # @param tag [Symbol] HTML tag name
+    # @param attrs [Hash] Additional attributes for the record
+    # @param block [Proc] Block for a div tag
     #
     # @return [String] Sanitized HTML string
     #
-    def dom_for_model(klass, attrs = {}, &block)
+    def _dom_for_model(klass, tag, attrs = {}, &block)
       object_classes  = []
       class_name      = klass.to_s.underscore
       request_action  = request.path_parameters[:action]
@@ -60,6 +61,7 @@ module DomFor
 
       object = instance_variable_get("@#{class_name}")
 
+      # TODO: Need refactoring
       object_id = if object
                     if object.persisted?
                       attrs = attrs.merge(object_id: object.id, object: class_name.pluralize)
@@ -76,13 +78,14 @@ module DomFor
                   end
 
       if block_given?
-        content_tag(:div, id: object_id, class: object_classes.join(' '), data: attrs, &block)
+        content_tag(tag, id: object_id, class: object_classes.join(' '), data: attrs, &block)
       else
-        tag(:div, id: object_id, class: object_classes.join(' '), data: attrs)
+        tag(tag, id: object_id, class: object_classes.join(' '), data: attrs)
       end
-
     rescue
-      content_tag(:div, &block)
+      content_tag(tag, &block)
     end
+
+    private :_dom_for_model
   end
 end

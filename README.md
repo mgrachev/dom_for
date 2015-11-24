@@ -24,11 +24,13 @@ Or install it yourself as:
 
 ## Usage
 
+By default the helper `dom_for` creates tag `div`. But it can override, passing an additional argument `tag`, for example: `dom _for User, tag: :span`:
+
 ```erb
 <%# /app/views/users/index.html.erb %>
 <%= dom_for User, attribute_1: 'value_1', attribute_2: 'value_2', attribute_3: 'value_3' do %>
   <% @users.each do |user| %>
-    <%= dom_for user, admin: user.admin, blocked: user.blocked do %>
+    <%= dom_for user, tag: :p, admin: user.admin, blocked: user.blocked do %>
       <%= content_tag(:span, user.name) %>
     <% end %>
   <% end %>
@@ -37,10 +39,10 @@ Or install it yourself as:
 
 ```html
 <div id="users" class="users" data-action="index" data-attribute-1="value_1" data-attribute-2="value_2" data-attribute-3="value_3">
-  <div id="user_1" class="user" data-admin="true" data-blocked="false" data-object-id="1">
+  <p id="user_1" class="user" data-admin="true" data-blocked="false" data-object-id="1">
     <span>Mikhail</span>
   </div>
-  <div id="user_2" class="user" data-admin="false" data-blocked="false" data-object-id="2">
+  <p id="user_2" class="user" data-admin="false" data-blocked="false" data-object-id="2">
     <span>Yulia</span>
   </div>
 </div>
@@ -95,11 +97,11 @@ The third argument, the helper `dom_for`, takes a block of code that will be wra
 
 ```erb
 <%# /app/views/users/index.html.erb %>
-<%= dom_for User %>
+<%= dom_for User, tag: :span %>
 ```
 
 ```html
-<div id="users" class="users" data-action="index" />
+<span id="users" class="users" data-action="index" />
 ```
 
 When defined instance variable with class name, the helper `dom_for` creates the additional html-attributes for this object:
