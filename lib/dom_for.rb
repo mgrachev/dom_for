@@ -28,12 +28,13 @@ module DomFor
   # @return [String] Sanitized HTML string
   #
   def dom_for(object, attrs = {}, &block)
-    tag = attrs.delete(:tag) || :div
+    tag   = attrs.delete(:tag) || :div
+    klass = attrs.delete(:class)
 
     if object.instance_of? Class
-      _dom_for_model(object, tag, attrs, &block)
+      _dom_for_model(object, tag, klass, attrs, &block)
     else
-      _dom_for_record(object, tag, attrs, &block)
+      _dom_for_record(object, tag, klass, attrs, &block)
     end
   end
 end

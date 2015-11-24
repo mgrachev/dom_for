@@ -28,7 +28,7 @@ By default the helper `dom_for` creates tag `div`. But it can override, passing 
 
 ```erb
 <%# /app/views/users/index.html.erb %>
-<%= dom_for User, attribute_1: 'value_1', attribute_2: 'value_2', attribute_3: 'value_3' do %>
+<%= dom_for User, class: 'customers', attribute_1: 'value_1', attribute_2: 'value_2', attribute_3: 'value_3' do %>
   <% @users.each do |user| %>
     <%= dom_for user, tag: :p, admin: user.admin, blocked: user.blocked do %>
       <%= content_tag(:span, user.name) %>
@@ -38,7 +38,7 @@ By default the helper `dom_for` creates tag `div`. But it can override, passing 
 ```
 
 ```html
-<div id="users" class="users" data-action="index" data-attribute-1="value_1" data-attribute-2="value_2" data-attribute-3="value_3">
+<div id="users" class="users customers" data-action="index" data-attribute-1="value_1" data-attribute-2="value_2" data-attribute-3="value_3">
   <p id="user_1" class="user" data-admin="true" data-blocked="false" data-object-id="1">
     <span>Mikhail</span>
   </div>
@@ -82,13 +82,13 @@ The second argument passed to additional html-attributes (is optional):
 
 ```erb
 <%# /app/views/users/index.html.erb %>
-<%= dom_for User, attribute_1: 'value_1', attribute_2: 'value_2' do %>
+<%= dom_for User class: 'clients', attribute_1: 'value_1', attribute_2: 'value_2' do %>
   <%= tag(:span) %>
 <% end %>
 ```
 
 ```html
-<div id="users" class="users" data-action="index" data-attribute-1="value_1" data-attribute-2="value_2">
+<div id="users" class="users clients" data-action="index" data-attribute-1="value_1" data-attribute-2="value_2">
   <span />
 </div>
 ```

@@ -47,12 +47,13 @@ module DomFor
     #
     # @param klass [Class] Model of ActiveRecord::Base
     # @param tag [Symbol] HTML tag name
+    # @param user_class [String] HTML class
     # @param attrs [Hash] Additional attributes for the record
     # @param block [Proc] Block for a div tag
     #
     # @return [String] Sanitized HTML string
     #
-    def _dom_for_model(klass, tag, attrs = {}, &block)
+    def _dom_for_model(klass, tag, user_class, attrs = {}, &block)
       object_classes  = []
       class_name      = klass.to_s.underscore
       request_action  = request.path_parameters[:action]
@@ -77,10 +78,12 @@ module DomFor
                     class_name.pluralize
                   end
 
+      html_class = object_classes.push(user_class).compact
+
       if block_given?
-        content_tag(tag, id: object_id, class: object_classes.join(' '), data: attrs, &block)
+        content_tag(tag, id: object_id, class: html_class, data: attrs, &block)
       else
-        tag(tag, id: object_id, class: object_classes.join(' '), data: attrs)
+        tag(tag, id: object_id, class: html_class, data: attrs)
       end
     rescue
       content_tag(tag, &block)

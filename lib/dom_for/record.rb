@@ -26,21 +26,23 @@ module DomFor
     #
     # @param record [ActiveRecord::Base] Instance of ActiveRecord::Base
     # @param tag [Symbol] HTML tag name
+    # @param user_class [String] HTML class
     # @param attrs [Hash] Additional attributes for the record
     # @param block [Proc] Block for a div tag
     #
     # @return [String] Sanitized HTML string
     #
-    def _dom_for_record(record, tag, attrs = {}, &block)
+    def _dom_for_record(record, tag, user_class, attrs = {}, &block)
       object_id     = dom_id(record)
       object_class  = dom_class(record.class)
+      html_class    = [object_class, user_class].compact
 
       attrs = attrs.merge(object_id: record.id) if record.persisted?
 
       if block_given?
-        content_tag(tag, id: object_id, class: object_class, data: attrs, &block)
+        content_tag(tag, id: object_id, class: html_class, data: attrs, &block)
       else
-        tag(tag, id: object_id, class: object_class, data: attrs)
+        tag(tag, id: object_id, class: html_class, data: attrs)
       end
     rescue
       content_tag(tag, &block)

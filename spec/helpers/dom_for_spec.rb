@@ -10,6 +10,10 @@ describe DomFor do
       expect(helper.dom_for(User, tag: :span)).to eq '<span id="users" class="users" />'
     end
 
+    it 'returns div with html class' do
+      expect(helper.dom_for(User, class: 'test ruby')).to eq '<div id="users" class="users test ruby" />'
+    end
+
     context 'with model' do
       it 'returns div without nested tags' do
         expect(helper.dom_for(User)).to eq '<div id="users" class="users" />'
