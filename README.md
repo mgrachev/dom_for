@@ -24,7 +24,7 @@ Or install it yourself as:
 
 ## Usage
 
-By default the helper `dom_for` creates tag `div`. But it can override, passing an additional argument `tag`, for example: `dom _for User, tag: :span`:
+By default the helper `dom_for` creates tag `div`. But it can override, passing an additional argument `tag: :span`, for example:
 
 ```erb
 <%# /app/views/users/index.html.erb %>
