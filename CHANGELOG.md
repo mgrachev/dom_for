@@ -1,3 +1,9 @@
+## 1.1.0 (24/11/2015)
+
+### Features
+
+* Ability to passing the name of tag as an argument
+
 ## 1.0.2 (26/03/2014)
 
 ### Enhancements
