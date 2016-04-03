@@ -7,6 +7,7 @@ Helper for creating HTML wrappers ActiveRecord objects
 [![Coverage Status](https://coveralls.io/repos/mgrachev/dom_for/badge.png?branch=master)](https://coveralls.io/r/mgrachev/dom_for?branch=master)
 [![Code Climate](https://codeclimate.com/github/mgrachev/dom_for.png)](https://codeclimate.com/github/mgrachev/dom_for)
 [![Dependency Status](https://gemnasium.com/mgrachev/dom_for.svg)](https://gemnasium.com/mgrachev/dom_for)
+[![Inline docs](http://inch-ci.org/github/mgrachev/dom_for.svg?branch=master)](http://inch-ci.org/github/mgrachev/dom_for)
 
 ## Installation
 
